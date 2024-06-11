@@ -1,0 +1,16 @@
+[core]
+    editor = vim
+[color]
+    ui = auto
+[alias]
+    st = status
+    br = branch
+    cm = commit
+    co = checkout
+    rb = rebase
+    ft = fetch
+    cp = cherry-pick
+    df = diff
+    dfn = diff --name-only
+[credential]
+    helper = store

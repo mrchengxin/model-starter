@@ -30,6 +30,11 @@ RUN bash /tmp/install-oh-my-zsh.sh
 COPY install-Miniconda.sh /tmp
 RUN bash /tmp/install-Miniconda.sh
 
+# install trojan-go
+COPY install-trojan-go.sh /tmp
+COPY ./etc/init.d/trojan-go /etc/init.d/trojan-go
+RUN bash /tmp/install-trojan-go.sh
+
 # set the default working directory
 WORKDIR /home/${USERNAME}
 

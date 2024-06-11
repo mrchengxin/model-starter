@@ -4,7 +4,7 @@
 
 NAME=trojan-go
 PIDFILE=/run/$NAME.pid
-DIR=/usr/local/trojan-go-linux-amd64
+DIR=/usr/local/trojan-go
 DAEMON=$DIR/$NAME
 CONFIG=$DIR/client.json
 DAEMON_ARGS="-config $CONFIG"

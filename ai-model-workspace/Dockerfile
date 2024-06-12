@@ -18,8 +18,9 @@ USER ${USERNAME}
 # set Zsh as the default shell for the current user
 RUN sudo chsh -s $(which zsh)
 
-# add git config
+# customize git
 COPY --chown=${USERNAME}:${USERNAME} .gitconfig /home/${USERNAME}/.gitconfig
+RUN git lfs install
 
 # install and customize oh-my-zsh
 COPY install-oh-my-zsh.sh /tmp
@@ -34,6 +35,11 @@ RUN bash /tmp/install-Miniconda.sh
 COPY install-trojan-go.sh /tmp
 COPY ./etc/init.d/trojan-go /etc/init.d/trojan-go
 RUN bash /tmp/install-trojan-go.sh
+
+# install frpc
+COPY install-frp.sh /tmp
+COPY ./etc/init.d/frpc /etc/init.d/frpc
+RUN bash /tmp/install-frp.sh
 
 # set the default working directory
 WORKDIR /home/${USERNAME}

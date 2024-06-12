@@ -1,0 +1,83 @@
+#!/bin/bash
+
+# Manage frpc as a service, mimic from Debian /etc/init.d/ssh
+
+NAME=frpc
+PIDFILE=/run/$NAME.pid
+DIR=/usr/local/frp
+DAEMON=$DIR/$NAME
+CONFIG=$DIR/frpc.toml
+DAEMON_ARGS="-c $CONFIG"
+STOP_SIGNAL=INT
+USER=root
+LOG=/tmp/$NAME.log
+
+export PATH="${PATH:+$PATH:}/usr/sbin:/sbin"
+
+common_opts="--quiet --chuid $USER --pidfile $PIDFILE"
+
+do_start() {
+    if [ -f "$CONFIG" ]; then
+        echo "Starting '$NAME'..."
+        start-stop-daemon --start $common_opts --chdir $DIR --make-pidfile --background --startas \
+            /bin/bash -- -c "exec $DAEMON $DAEMON_ARGS > $LOG 2>&1"
+        do_status
+    else
+        echo -e "\033[31mConfig file not found: $CONFIG\033[0m"
+    fi
+}
+
+do_stop() {
+    opt=${@:-}
+    echo "Stopping '$NAME'..."
+    start-stop-daemon --stop $common_opts --signal $STOP_SIGNAL --oknodo $opt --remove-pidfile
+    do_status
+}
+
+do_status() {
+    start-stop-daemon --status $common_opts && exit_status=$? || exit_status=$?
+    case "$exit_status" in
+    0)
+        echo -e "Program '$NAME' is \033[32mrunning\033[0m."
+        echo "CMD: $DAEMON $DAEMON_ARGS"
+        echo "PID: $(cat $PIDFILE)"
+        echo "LOG: $LOG"
+        ;;
+    1)
+        echo -e "Program '$NAME' is \033[31mstopped\033[0m, but the pid file exists."
+        echo "CMD: $DAEMON $DAEMON_ARGS"
+        echo "PID: $(cat $PIDFILE)"
+        echo "LOG: $LOG"
+        ;;
+    3)
+        echo -e "Program '$NAME' is \033[31mstopped\033[0m."
+        echo "CMD: $DAEMON $DAEMON_ARGS"
+        echo "LOG: $LOG"
+        ;;
+    4)
+        echo "Unable to determine program '$NAME' status."
+        ;;
+    esac
+}
+
+case "$1" in
+status)
+    do_status
+    ;;
+start)
+    do_start
+    ;;
+stop)
+    do_stop
+    ;;
+restart)
+    do_stop --retry 30
+    do_start
+    ;;
+*)
+    echo "Usage: "$1" {status|start|stop|restart}"
+    exit 1
+    ;;
+esac
+
+exit 0

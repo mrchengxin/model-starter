@@ -21,9 +21,9 @@ do_start() {
         echo "Starting '$NAME'..."
         start-stop-daemon --start $common_opts --chdir $DIR --make-pidfile --background --startas \
             /bin/bash -- -c "exec $DAEMON $DAEMON_ARGS > $LOG 2>&1"
-        echo "Started '$NAME'."
+        do_status
     else
-        echo "Config file not found: $CONFIG"
+        echo -e "\033[31mConfig file not found: $CONFIG\033[0m"
     fi
 }
 
@@ -31,25 +31,28 @@ do_stop() {
     opt=${@:-}
     echo "Stopping '$NAME'..."
     start-stop-daemon --stop $common_opts --signal $STOP_SIGNAL --oknodo $opt --remove-pidfile
-    echo "Stopped '$NAME'."
+    do_status
 }
 
 do_status() {
     start-stop-daemon --status $common_opts && exit_status=$? || exit_status=$?
     case "$exit_status" in
     0)
-        echo "Program '$NAME' is running."
-        echo "CMD: $($DAEMON $DAEMON_ARGS)"
+        echo -e "Program '$NAME' is \033[32mrunning\033[0m."
+        echo "CMD: $DAEMON $DAEMON_ARGS"
         echo "PID: $(cat $PIDFILE)"
+        echo "LOG: $LOG"
         ;;
     1)
-        echo "Program '$NAME' is not running but the pid file exists."
-        echo "CMD: $($DAEMON $DAEMON_ARGS)"
+        echo -e "Program '$NAME' is \033[31mstopped\033[0m, but the pid file exists."
+        echo "CMD: $DAEMON $DAEMON_ARGS"
         echo "PID: $(cat $PIDFILE)"
+        echo "LOG: $LOG"
         ;;
     3)
-        echo "Program '$NAME' is not running."
-        echo "CMD: $($DAEMON $DAEMON_ARGS)"
+        echo -e "Program '$NAME' is \033[31mstopped\033[0m."
+        echo "CMD: $DAEMON $DAEMON_ARGS"
+        echo "LOG: $LOG"
         ;;
     4)
         echo "Unable to determine program '$NAME' status."

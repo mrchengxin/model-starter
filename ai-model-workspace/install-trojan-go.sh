@@ -9,5 +9,5 @@ fi
 wget -O /tmp/${ZIP_NAME}.zip https://github.com/p4gefau1t/trojan-go/releases/download/v0.10.6/${ZIP_NAME}.zip
 
 # Unzip the file to a specific directory
-sudo unzip /tmp/${ZIP_NAME}.zip -d /usr/local/trojan-go/
+unzip /tmp/${ZIP_NAME}.zip -d /usr/local/trojan-go/
 rm /tmp/${ZIP_NAME}.zip

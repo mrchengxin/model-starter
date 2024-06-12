@@ -5,26 +5,18 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     wget git htop vim pciutils aria2 git-lfs curl \
     httpie ncdu openssh-server zip unzip fontconfig \
-    zsh iputils-ping jq bmon sudo
-
-ENV USERNAME="ubuntu"
-
-# Create a new user
-RUN adduser --disabled-password --gecos '' ${USERNAME}
-RUN usermod -aG sudo ${USERNAME}
-RUN echo "%sudo ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
-USER ${USERNAME}
+    zsh iputils-ping jq bmon
 
 # set Zsh as the default shell for the current user
-RUN sudo chsh -s $(which zsh)
+RUN chsh -s $(which zsh)
 
 # customize git
-COPY --chown=${USERNAME}:${USERNAME} .gitconfig /home/${USERNAME}/.gitconfig
+COPY .gitconfig /root/.gitconfig
 RUN git lfs install
 
 # install and customize oh-my-zsh
 COPY install-oh-my-zsh.sh /tmp
-COPY --chown=${USERNAME}:${USERNAME} .p10k.zsh /home/${USERNAME}/.p10k.zsh
+COPY .p10k.zsh /root/.p10k.zsh
 RUN bash /tmp/install-oh-my-zsh.sh
 
 # install Miniconda
@@ -42,7 +34,7 @@ COPY ./etc/init.d/frpc /etc/init.d/frpc
 RUN bash /tmp/install-frp.sh
 
 # set the default working directory
-WORKDIR /home/${USERNAME}
+WORKDIR /root
 
 # use Zsh when the container starts
 CMD ["/bin/zsh"]

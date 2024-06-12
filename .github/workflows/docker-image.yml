@@ -6,7 +6,7 @@ on:
       - release-v**
 
 jobs:
-  build:
+  ai-model-workspace:
     runs-on: ubuntu-latest
 
     steps:

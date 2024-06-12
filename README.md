@@ -17,7 +17,6 @@ It has some highly popular toolkits pre-installed.
 ### Users
 
 - `root`: the root user
-- `ubuntu`: the default normal user, can use sudo without password
 
 ### Pre-installed libraries and tools
 

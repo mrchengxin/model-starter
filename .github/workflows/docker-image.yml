@@ -29,7 +29,7 @@ jobs:
 
       - id: get_version
         name: Get version
-        uses: jannemattila/get-version-from-tag@v3
+        run: echo "::set-output name=version::$(echo ${{ github.ref_name }} | sed 's|release-v||g')"
 
       - name: Build and push
         uses: docker/build-push-action@v5

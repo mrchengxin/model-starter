@@ -9,11 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        shell: bash
-        working-directory: ./ai-model-workspace
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -34,6 +29,7 @@ jobs:
 
       - name: Build and push
         uses: docker/build-push-action@v5
+        working-directory: ./ai-model-workspace
         with:
           context: .
           platforms: linux/amd64

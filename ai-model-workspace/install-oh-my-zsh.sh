@@ -30,7 +30,7 @@ sh $HOME/.oh-my-zsh/custom/themes/powerlevel10k/gitstatus/install
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 # install zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 # enable plugins
 sed -i 's|plugins=(git)|plugins=(\n    git\n    extract\n    z\n    zsh-syntax-highlighting\n    zsh-autosuggestions\n)|g' ~/.zshrc

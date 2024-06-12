@@ -12,15 +12,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-      
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-        with:
-          platforms: linux/amd64,linux/arm64
-          driver: docker-container
 
       - name: Alibaba Cloud Container Registry (ACR) Login
         uses: aliyun/acr-login@v1
@@ -38,7 +29,13 @@ jobs:
 
       - id: get_version
         name: Get version
-        run: echo "::set-output name=version::$(echo ${{ github.ref_name }} | sed 's|release-v||g')"
+        run: echo "version=$(echo ${{ github.ref_name }} | sed 's|release-v||g')" >> $GITHUB_OUTPUT
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
 
       - name: Build and Push
         uses: docker/build-push-action@v5

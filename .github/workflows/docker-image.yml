@@ -32,10 +32,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
 
-      - id: get_version
-        name: Get version
-        uses: jannemattila/get-version-from-tag@v3
-
       - name: Build and push
         uses: docker/build-push-action@v5
         with:
@@ -43,5 +39,5 @@ jobs:
           platforms: linux/amd64
           push: true
           tags: |
-            mrchengxin/ai-model-workspace:$(echo "${{ steps.get_version.outputs.version }}")
-            registry.cn-shanghai.aliyuncs.com/mrchengxin/ai-model-workspace:$(echo "${{ steps.get_version.outputs.version }}")
+            mrchengxin/ai-model-workspace:latest
+            registry.cn-shanghai.aliyuncs.com/mrchengxin/ai-model-workspace:latest

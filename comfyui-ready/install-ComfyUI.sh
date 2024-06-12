@@ -6,6 +6,7 @@ conda create -n comfyui python=3.10.11 -y
 conda activate comfyui
 
 # install necessary libraries
+pip install torch torchvision torchaudio
 pip install opencv-python-headless
 pip install xformers --no-deps
 
@@ -47,7 +48,7 @@ custom_nodes_repositories=(
 for repo in "${custom_nodes_repositories[@]}"; do
   # clone the repository
   cd /root/ComfyUI/custom_nodes || { echo "Failed to open custom_nodes directory"; exit 1; }
-  git clone "$repo"
+  git clone --depth 1 "$repo"
 
   # install the requirements
   repo_dir="${repo##*/}"
@@ -60,11 +61,11 @@ done
 
 # install ComfyUI_UltimateSDUpscale
 cd /root/ComfyUI/custom_nodes || { echo "Failed to open custom_nodes directory"; exit 1; }
-git clone https://github.com/ssitu/ComfyUI_UltimateSDUpscale --recursive
+git clone --depth 1 https://github.com/ssitu/ComfyUI_UltimateSDUpscale --recursive
 
 # ComfyUI-Impact-Pack
 cd /root/ComfyUI/custom_nodes || { echo "Failed to open custom_nodes directory"; exit 1; }
-git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git
+git clone --depth 1 https://github.com/ltdrdata/ComfyUI-Impact-Pack.git
 cd /root/ComfyUI/custom_nodes/ComfyUI-Impact-Pack || { echo "Failed to open ComfyUI-Impact-Pack directory"; exit 1; }
-git clone https://github.com/ltdrdata/ComfyUI-Impact-Subpack impact_subpack
+git clone --depth 1 https://github.com/ltdrdata/ComfyUI-Impact-Subpack impact_subpack
 python install.py

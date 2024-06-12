@@ -5,7 +5,8 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     wget git htop vim pciutils aria2 git-lfs curl \
     httpie ncdu openssh-server zip unzip fontconfig \
-    zsh iputils-ping jq bmon
+    zsh iputils-ping jq bmon gcc ninja-build \
+    build-essential
 
 # set Zsh as the default shell for the current user
 RUN chsh -s $(which zsh)

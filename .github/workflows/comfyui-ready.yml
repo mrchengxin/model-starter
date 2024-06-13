@@ -1,0 +1,59 @@
+name: Build and Push Docker image for comfyui-ready
+
+on:
+  push:
+    tags:
+      - comfyui-ready-v**
+
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Alibaba Cloud Container Registry (ACR) Login
+        uses: aliyun/acr-login@v1
+        with:
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+          region-id: cn-shanghai
+          login-server: registry.cn-shanghai.aliyuncs.com
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - id: get_version
+        name: Get version
+        run: echo "version=$(echo ${{ github.ref_name }} | sed 's|comfyui-ready-v||g')" >> $GITHUB_OUTPUT
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      # should be exatcly before the build-push-action as it will switch the driver to
+      # docker-container that supports building multi-platform images
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and Push
+        uses: docker/build-push-action@v5
+        with:
+          context: ./comfyui-ready
+          file: ./comfyui-ready/Dockerfile
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: |
+            mrchengxin/comfyui-ready:latest
+            mrchengxin/comfyui-ready:${{ steps.get_version.outputs.version }}
+            registry.cn-shanghai.aliyuncs.com/mrchengxin/comfyui-ready:latest
+            registry.cn-shanghai.aliyuncs.com/mrchengxin/comfyui-ready:${{ steps.get_version.outputs.version }}
+
+      - name: Update Docker Hub Description
+        uses: peter-evans/dockerhub-description@v4
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          repository: mrchengxin/comfyui-ready

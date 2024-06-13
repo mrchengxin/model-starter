@@ -1,12 +1,11 @@
-name: Build and Push Docker image to ACR
+name: Build and Push Docker image for ai-model-workspace
 
 on:
   push:
     tags:
-      - release-v**
+      - ai-model-workspace-v**
 
-jobs:
-  ai-model-workspace:
+  build-and-push:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +28,7 @@ jobs:
 
       - id: get_version
         name: Get version
-        run: echo "version=$(echo ${{ github.ref_name }} | sed 's|release-v||g')" >> $GITHUB_OUTPUT
+        run: echo "version=$(echo ${{ github.ref_name }} | sed 's|ai-model-workspace-v||g')" >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3

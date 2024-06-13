@@ -1,14 +1,16 @@
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/mrchengxin/model-starter/docker-image.yml?logo=github&logoColor=white&label=Build%20and%20Push%20Docker%20Image)
-![GitHub License](https://img.shields.io/github/license/mrchengxin/model-starter?logo=github)
-
 # model-starter
 
 Use Docker to start a variety of AI models.
+
+## :octocat: GitHub
+
+https://github.com/mrchengxin/model-starter
 
 ## :house: Image 1: ai-model-workspace
 
 [https://hub.docker.com/r/mrchengxin/ai-model-workspace](https://hub.docker.com/r/mrchengxin/ai-model-workspace)
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/mrchengxin/model-starter/ai-model-workspace.yml?logo=github&logoColor=white&label=build%20and%20push)
 ![Docker Image Size](https://img.shields.io/docker/image-size/mrchengxin/ai-model-workspace?logo=docker&logoColor=white)
 ![Docker Pulls](https://img.shields.io/docker/pulls/mrchengxin/ai-model-workspace?logo=docker&logoColor=white)
 ![Docker Image Version](https://img.shields.io/docker/v/mrchengxin/ai-model-workspace?logo=docker&logoColor=white)
@@ -38,3 +40,7 @@ It comes pre-installed with a variety of very popular toolkits.
 2. [Miniconda](https://docs.anaconda.com/free/miniconda/)
 3. [p4gefau1t/trojan-go](https://github.com/p4gefau1t/trojan-go)
 4. [fatedier/frp](https://github.com/fatedier/frp)
+
+## License
+
+![GitHub License](https://img.shields.io/github/license/mrchengxin/model-starter?logo=github)

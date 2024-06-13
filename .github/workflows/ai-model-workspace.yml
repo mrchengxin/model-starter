@@ -5,6 +5,7 @@ on:
     tags:
       - ai-model-workspace-v**
 
+jobs:
   build-and-push:
     runs-on: ubuntu-latest
 

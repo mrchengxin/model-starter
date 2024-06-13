@@ -5,6 +5,7 @@ on:
     tags:
       - comfyui-ready-v**
 
+jobs:
   build-and-push:
     runs-on: ubuntu-latest
 

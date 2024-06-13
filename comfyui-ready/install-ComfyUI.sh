@@ -6,7 +6,7 @@ conda create -n comfyui python=3.10.11 -y
 conda activate comfyui
 
 # install necessary libraries
-pip install torch
+pip install torch torchvision
 pip install opencv-python-headless
 pip install xformers --no-deps
 

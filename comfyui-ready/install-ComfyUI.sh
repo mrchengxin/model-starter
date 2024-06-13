@@ -7,7 +7,8 @@ conda activate comfyui
 
 # install necessary libraries
 pip install torch torchvision
-pip install opencv-python-headless
+# to fix the no libGL.so.1 issue
+pip install opencv-python-headless==4.8.1.78
 pip install xformers --no-deps
 
 # clone ComfyUI

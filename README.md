@@ -2,9 +2,7 @@
 
 Use Docker to start a variety of AI models.
 
-## :octocat: GitHub
-
-https://github.com/mrchengxin/model-starter
+Source codes: [https://github.com/mrchengxin/model-starter](https://github.com/mrchengxin/model-starter)
 
 ## :house: Image 1: ai-model-workspace
 

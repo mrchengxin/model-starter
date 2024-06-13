@@ -1,24 +1,34 @@
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/mrchengxin/model-starter/docker-image.yml?logo=github&logoColor=white&label=Build%20and%20Push%20Docker%20Image)
+![GitHub License](https://img.shields.io/github/license/mrchengxin/model-starter?logo=github)
+
 # model-starter
 
 Use Docker to start a variety of AI models.
 
-## ai-model-workspace
+## :house: Image 1: ai-model-workspace
 
-This is a customized base Docker image.  
-It has some highly popular toolkits pre-installed.
+[https://hub.docker.com/r/mrchengxin/ai-model-workspace](https://hub.docker.com/r/mrchengxin/ai-model-workspace)
 
-### Base image
+![Docker Image Size](https://img.shields.io/docker/image-size/mrchengxin/ai-model-workspace?logo=docker&logoColor=white)
+![Docker Pulls](https://img.shields.io/docker/pulls/mrchengxin/ai-model-workspace?logo=docker&logoColor=white)
+![Docker Image Version](https://img.shields.io/docker/v/mrchengxin/ai-model-workspace?logo=docker&logoColor=white)
+
+This Docker image serves as an easy-to-use workspace for working with AI models.  
+The goal is to prepare enough toolkits for you to start working with AI models with minimal effort.  
+It comes pre-installed with a variety of very popular toolkits.
+
+#### Base image
 
 - [nvidia/cuda](https://hub.docker.com/r/nvidia/cuda/)
   - [Ubuntu 22.04](https://releases.ubuntu.com/jammy/)
   - [Nvidia CUDA math libraries](https://developer.nvidia.com/gpu-accelerated-libraries)
   - [Nvidia NCCL](https://developer.nvidia.com/nccl)
 
-### Users
+#### Users
 
 - `root`: the root user
 
-### Pre-installed libraries and tools
+#### Pre-installed libraries and tools
 
 1. [Zsh](https://www.zsh.org/)
    - [ohmyzsh/ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)

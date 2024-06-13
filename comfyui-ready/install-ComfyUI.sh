@@ -6,7 +6,7 @@ conda create -n comfyui python=3.10.11 -y
 conda activate comfyui
 
 # install necessary libraries
-pip install torch torchvision
+pip install --no-cache-dir torch torchvision --extra-index-url https://download.pytorch.org/whl/cpu
 # to fix the no libGL.so.1 issue
 pip install opencv-python-headless==4.8.1.78
 pip install xformers --no-deps

@@ -55,11 +55,13 @@ jobs:
         with:
           context: ./ai-model-workspace
           file: ./ai-model-workspace/Dockerfile
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: |
             mrchengxin/ai-model-workspace:latest
             mrchengxin/ai-model-workspace:${{ steps.get_version.outputs.version }}
+            registry.cn-shanghai.aliyuncs.com/mrchengxin/ai-model-workspace:latest
+            registry.cn-shanghai.aliyuncs.com/mrchengxin/ai-model-workspace:${{ steps.get_version.outputs.version }}
 
       - name: Update Docker Hub Description
         uses: peter-evans/dockerhub-description@v4

@@ -51,6 +51,8 @@ jobs:
           tags: |
             mrchengxin/comfyui-ready:latest
             mrchengxin/comfyui-ready:${{ steps.get_version.outputs.version }}
+            registry.cn-shanghai.aliyuncs.com/mrchengxin/comfyui-ready:latest
+            registry.cn-shanghai.aliyuncs.com/mrchengxin/comfyui-ready:${{ steps.get_version.outputs.version }}
 
       - name: Update Docker Hub Description
         uses: peter-evans/dockerhub-description@v4

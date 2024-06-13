@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
+FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
 
 # install frequently used libraries and tools
 RUN apt-get update \

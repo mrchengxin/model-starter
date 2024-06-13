@@ -42,7 +42,7 @@ for repo in "${custom_nodes_repositories[@]}"; do
   repo_dir="${repo_dir%.git}"
   cd "/root/ComfyUI/custom_nodes/$repo_dir" || { echo "Failed to open $repo_dir directory"; exit 1; }
   if [ -f "requirements.txt" ]; then
-    pip install -r requirements.txt
+    pip install --no-cache-dir -r requirements.txt
   fi
 done
 

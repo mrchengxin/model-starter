@@ -4,7 +4,7 @@ Use Docker to start a variety of AI models.
 
 Source codes: [https://github.com/mrchengxin/model-starter](https://github.com/mrchengxin/model-starter)
 
-## :house: Image 1: ai-model-workspace
+## 🏠 Image 1: ai-model-workspace
 
 [https://hub.docker.com/r/mrchengxin/ai-model-workspace](https://hub.docker.com/r/mrchengxin/ai-model-workspace)
 
@@ -39,7 +39,7 @@ It comes pre-installed with a variety of very popular toolkits.
 3. [p4gefau1t/trojan-go](https://github.com/p4gefau1t/trojan-go)
 4. [fatedier/frp](https://github.com/fatedier/frp)
 
-## Image 2: comfyui-ready
+## 🏡 Image 2: comfyui-ready
 
 [https://hub.docker.com/r/mrchengxin/comfyui-ready](https://hub.docker.com/r/mrchengxin/comfyui-ready)
 

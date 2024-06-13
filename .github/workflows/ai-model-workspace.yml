@@ -1,4 +1,4 @@
-name: Build and Push Docker image for ai-model-workspace
+name: ai-model-workspace
 
 on:
   push:

@@ -2,7 +2,7 @@
 
 # create the Python environment for ComfyUI
 source /root/miniconda3/etc/profile.d/conda.sh
-conda create -n comfyui python==3.10.11 pytorch==2.3.1 cudatoolkit==12.1 cudnn==8 -y
+conda create -n comfyui python==3.10.11 pytorch==2.3.1 cudatoolkit==12.1 cudnn==8 -c pytorch -c nvidia -y
 conda activate comfyui
 
 # install necessary libraries

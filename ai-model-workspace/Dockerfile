@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.5.0-runtime-ubuntu22.04
+FROM nvidia/cuda:12.5.0-base-ubuntu22.04
 
 # install frequently used libraries and tools
 RUN apt-get update \

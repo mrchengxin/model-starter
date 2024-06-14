@@ -1,6 +1,13 @@
-FROM mrchengxin/ai-model-workspace:latest
+FROM ai-model-workspace:latest AS build
 
-# create directory for ComfyUI scripts
+# install pytorch
+COPY ./install-pytorch.sh /tmp
+RUN /tmp/install-pytorch.sh
+
+FROM ai-model-workspace:latest
+
+COPY --from=build /opt/miniconda3/. /opt/miniconda3
+
 RUN mkdir -p /opt/ComfyUI
 
 # install ComfyUI

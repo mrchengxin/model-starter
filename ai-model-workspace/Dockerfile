@@ -13,6 +13,9 @@ RUN apt-get update \
 # set Zsh as the default shell for the current user
 RUN chsh -s $(which zsh)
 
+# use Zsh to execute commands
+SHELL [ "/usr/bin/zsh", "-c" ]
+
 # customize git
 COPY .gitconfig /root/.gitconfig
 RUN git lfs install
@@ -20,24 +23,25 @@ RUN git lfs install
 # install and customize oh-my-zsh
 COPY install-oh-my-zsh.sh /tmp
 COPY .p10k.zsh /root/.p10k.zsh
-RUN bash /tmp/install-oh-my-zsh.sh
-
-# install Miniconda
-COPY install-Miniconda.sh /tmp
-RUN bash /tmp/install-Miniconda.sh
+RUN /tmp/install-oh-my-zsh.sh
 
 # install trojan-go
 COPY install-trojan-go.sh /tmp
 COPY ./etc/init.d/trojan-go /etc/init.d/trojan-go
-RUN bash /tmp/install-trojan-go.sh
+RUN /tmp/install-trojan-go.sh
 
 # install frpc
 COPY install-frp.sh /tmp
 COPY ./etc/init.d/frpc /etc/init.d/frpc
-RUN bash /tmp/install-frp.sh
+RUN /tmp/install-frp.sh
+
+# install Miniconda
+COPY install-Miniconda.sh /tmp
+RUN /tmp/install-Miniconda.sh
+ENV PATH /opt/miniconda3/bin:$PATH
 
 # set the default working directory
 WORKDIR /root
 
 # use Zsh when the container starts
-CMD ["/bin/zsh"]
+CMD [ "/usr/bin/zsh" ]

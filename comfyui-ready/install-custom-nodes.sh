@@ -2,10 +2,6 @@
 
 INSTALL_DIR="${WORKSPACE_DIR:-/root}"
 
-# create the Python environment for ComfyUI
-source /root/miniconda3/etc/profile.d/conda.sh
-conda activate comfyui
-
 # popular ComfyUI custom nodes to be installed
 custom_nodes_repositories=(
 "https://github.com/ltdrdata/ComfyUI-Manager.git"

@@ -1,14 +1,17 @@
 FROM mrchengxin/ai-model-workspace:latest
+# FROM ai-model-workspace:latest
+
+# create directory for ComfyUI scripts
+RUN mkdir -p /opt/ComfyUI
 
 # install ComfyUI
-COPY ./install-ComfyUI.sh /tmp
-# RUN /tmp/install-ComfyUI.sh
+COPY ./install-ComfyUI.sh /opt/ComfyUI
+RUN /opt/ComfyUI/install-ComfyUI.sh
 
 # install custom nodes
-COPY ./install-custom-nodes.sh /tmp
-# RUN /tmp/install-custom-nodes.sh
+COPY ./install-custom-nodes.sh /opt/ComfyUI
+# RUN /opt/ComfyUI/install-custom-nodes.sh
 
 WORKDIR /root
 
-# Set Zsh as the default shell
-CMD ["/usr/bin/zsh"]
+CMD [ "/usr/bin/zsh" ]

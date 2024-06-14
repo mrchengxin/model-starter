@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # create the Python environment for ComfyUI
-source /root/miniconda3/etc/profile.d/conda.sh
-conda activate comfyui
+# source /root/miniconda3/etc/profile.d/conda.sh
+# conda activate comfyui
 
 # popular ComfyUI custom nodes to be installed
 custom_nodes_repositories=(

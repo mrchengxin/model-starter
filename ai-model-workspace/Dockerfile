@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
+FROM pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
 
 # install frequently used libraries and tools
 RUN apt-get update \
@@ -21,8 +21,8 @@ COPY .p10k.zsh /root/.p10k.zsh
 RUN bash /tmp/install-oh-my-zsh.sh
 
 # install Miniconda
-COPY install-Miniconda.sh /tmp
-RUN bash /tmp/install-Miniconda.sh
+# COPY install-Miniconda.sh /tmp
+# RUN bash /tmp/install-Miniconda.sh
 
 # install trojan-go
 COPY install-trojan-go.sh /tmp

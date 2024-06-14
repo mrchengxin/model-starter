@@ -42,26 +42,16 @@ jobs:
           docker-images: true
           swap-storage: true
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
-      # should be exatcly before the build-push-action as it will switch the driver to
-      # docker-container that supports building multi-platform images
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
       - name: Build and Push
         uses: docker/build-push-action@v5
         with:
           context: ./ai-model-workspace
           file: ./ai-model-workspace/Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           push: true
           tags: |
             mrchengxin/ai-model-workspace:latest
             mrchengxin/ai-model-workspace:${{ steps.get_version.outputs.version }}
-            registry.cn-shanghai.aliyuncs.com/mrchengxin/ai-model-workspace:latest
-            registry.cn-shanghai.aliyuncs.com/mrchengxin/ai-model-workspace:${{ steps.get_version.outputs.version }}
 
       - name: Update Docker Hub Description
         uses: peter-evans/dockerhub-description@v4

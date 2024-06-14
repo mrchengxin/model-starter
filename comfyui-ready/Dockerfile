@@ -1,5 +1,4 @@
 FROM mrchengxin/ai-model-workspace:latest
-# FROM ai-model-workspace:latest
 
 # create directory for ComfyUI scripts
 RUN mkdir -p /opt/ComfyUI

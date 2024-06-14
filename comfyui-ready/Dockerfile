@@ -1,12 +1,4 @@
-FROM ai-model-workspace:latest AS build
-
-# install pytorch
-COPY ./install-pytorch.sh /tmp
-RUN /tmp/install-pytorch.sh
-
-FROM ai-model-workspace:latest
-
-COPY --from=build /opt/miniconda3/. /opt/miniconda3
+FROM mrchengxin/ai-model-workspace:latest
 
 RUN mkdir -p /opt/ComfyUI
 

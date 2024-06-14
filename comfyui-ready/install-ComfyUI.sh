@@ -9,7 +9,7 @@ echo -e "conda activate comfyui" >> ~/.bashrc
 
 # install necessary libraries
 conda run --no-capture-output -n comfyui pip install --no-cache-dir torch torchvision
-# # to fix the no libGL.so.1 issue
+# to fix the no libGL.so.1 issue
 conda run --no-capture-output -n comfyui pip install --no-cache-dir opencv-python-headless==4.8.1.78
 conda run --no-capture-output -n comfyui pip install --no-cache-dir xformers --no-deps
 

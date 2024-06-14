@@ -7,7 +7,7 @@ RUN /tmp/install-ComfyUI.sh
 
 # install custom nodes
 COPY ./install-custom-nodes.sh /tmp
-# RUN /tmp/install-custom-nodes.sh
+RUN /tmp/install-custom-nodes.sh
 
 WORKDIR /root
 

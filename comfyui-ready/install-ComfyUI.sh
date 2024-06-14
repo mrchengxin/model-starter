@@ -2,11 +2,11 @@
 
 # create the Python environment for ComfyUI
 source /root/miniconda3/etc/profile.d/conda.sh
-conda create -n comfyui python==3.10.11 -y
+conda create -n comfyui python==3.12.3 -y
 conda activate comfyui
 
 # install necessary libraries
-pip install --no-cache-dir torch torchvision --extra-index-url https://download.pytorch.org/whl/cpu
+pip install --no-cache-dir torch torchvision
 # to fix the no libGL.so.1 issue
 pip install --no-cache-dir opencv-python-headless==4.8.1.78
 pip install --no-cache-dir xformers --no-deps

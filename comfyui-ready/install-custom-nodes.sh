@@ -1,8 +1,10 @@
 #!/bin/bash
 
+INSTALL_DIR="${WORKSPACE_DIR:-/root}"
+
 # create the Python environment for ComfyUI
-# source /root/miniconda3/etc/profile.d/conda.sh
-# conda activate comfyui
+source /root/miniconda3/etc/profile.d/conda.sh
+conda activate comfyui
 
 # popular ComfyUI custom nodes to be installed
 custom_nodes_repositories=(
@@ -34,28 +36,28 @@ custom_nodes_repositories=(
 # install above custom nodes
 for repo in "${custom_nodes_repositories[@]}"; do
   # clone the repository
-  cd /root/ComfyUI/custom_nodes || { echo "Failed to open custom_nodes directory"; exit 1; }
+  cd ${INSTALL_DIR}/ComfyUI/custom_nodes || { echo "Failed to open custom_nodes directory"; exit 1; }
   git clone --depth 1 "$repo"
 
   # install the requirements
   repo_dir="${repo##*/}"
   repo_dir="${repo_dir%.git}"
-  cd "/root/ComfyUI/custom_nodes/$repo_dir" || { echo "Failed to open $repo_dir directory"; exit 1; }
+  cd "${INSTALL_DIR}/ComfyUI/custom_nodes/$repo_dir" || { echo "Failed to open $repo_dir directory"; exit 1; }
   if [ -f "requirements.txt" ]; then
     pip install --no-cache-dir -r requirements.txt
   fi
 done
 
 # create necessary directory for comfyui-workspace-manager
-mkdir -p /root/ComfyUI/my_workflows
+mkdir -p ${INSTALL_DIR}/ComfyUI/my_workflows
 
 # install ComfyUI_UltimateSDUpscale
-cd /root/ComfyUI/custom_nodes || { echo "Failed to open custom_nodes directory"; exit 1; }
+cd ${INSTALL_DIR}/ComfyUI/custom_nodes || { echo "Failed to open custom_nodes directory"; exit 1; }
 git clone --depth 1 https://github.com/ssitu/ComfyUI_UltimateSDUpscale --recursive
 
 # ComfyUI-Impact-Pack
-cd /root/ComfyUI/custom_nodes || { echo "Failed to open custom_nodes directory"; exit 1; }
+cd ${INSTALL_DIR}/ComfyUI/custom_nodes || { echo "Failed to open custom_nodes directory"; exit 1; }
 git clone --depth 1 https://github.com/ltdrdata/ComfyUI-Impact-Pack.git
-cd /root/ComfyUI/custom_nodes/ComfyUI-Impact-Pack || { echo "Failed to open ComfyUI-Impact-Pack directory"; exit 1; }
+cd ${INSTALL_DIR}/ComfyUI/custom_nodes/ComfyUI-Impact-Pack || { echo "Failed to open ComfyUI-Impact-Pack directory"; exit 1; }
 git clone --depth 1 https://github.com/ltdrdata/ComfyUI-Impact-Subpack impact_subpack
 python install.py

@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:2.3.1-cuda12.1-cudnn8-runtime
+FROM nvidia/cuda:12.5.0-runtime-ubuntu22.04
 
 # install frequently used libraries and tools
 RUN apt-get update \
@@ -6,7 +6,9 @@ RUN apt-get update \
     wget git htop vim pciutils aria2 git-lfs curl \
     httpie ncdu openssh-server zip unzip fontconfig \
     zsh iputils-ping jq bmon gcc ninja-build \
-    build-essential
+    build-essential \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # set Zsh as the default shell for the current user
 RUN chsh -s $(which zsh)
@@ -21,8 +23,8 @@ COPY .p10k.zsh /root/.p10k.zsh
 RUN bash /tmp/install-oh-my-zsh.sh
 
 # install Miniconda
-# COPY install-Miniconda.sh /tmp
-# RUN bash /tmp/install-Miniconda.sh
+COPY install-Miniconda.sh /tmp
+RUN bash /tmp/install-Miniconda.sh
 
 # install trojan-go
 COPY install-trojan-go.sh /tmp
@@ -33,9 +35,6 @@ RUN bash /tmp/install-trojan-go.sh
 COPY install-frp.sh /tmp
 COPY ./etc/init.d/frpc /etc/init.d/frpc
 RUN bash /tmp/install-frp.sh
-
-# remove apt caches
-RUN rm -rf /var/lib/apt/lists/*
 
 # set the default working directory
 WORKDIR /root

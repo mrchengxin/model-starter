@@ -8,10 +8,9 @@ Source codes: [https://github.com/mrchengxin/model-starter](https://github.com/m
 
 [https://hub.docker.com/r/mrchengxin/ai-model-workspace](https://hub.docker.com/r/mrchengxin/ai-model-workspace)
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/mrchengxin/model-starter/ai-model-workspace.yml?logo=github&logoColor=white&label=build%20and%20push)
-![Docker Image Size](https://img.shields.io/docker/image-size/mrchengxin/ai-model-workspace?logo=docker&logoColor=white)
-![Docker Pulls](https://img.shields.io/docker/pulls/mrchengxin/ai-model-workspace?logo=docker&logoColor=white)
-![Docker Image Version](https://img.shields.io/docker/v/mrchengxin/ai-model-workspace?logo=docker&logoColor=white)
+[![Docker Image Size](https://img.shields.io/docker/image-size/mrchengxin/ai-model-workspace?logo=docker&logoColor=white)](https://hub.docker.com/r/mrchengxin/ai-model-workspace)&ensp;
+[![Docker Pulls](https://img.shields.io/docker/pulls/mrchengxin/ai-model-workspace?logo=docker&logoColor=white)](https://hub.docker.com/r/mrchengxin/ai-model-workspace)&ensp;
+[![Docker Image Version](https://img.shields.io/docker/v/mrchengxin/ai-model-workspace?logo=docker&logoColor=white)](https://hub.docker.com/r/mrchengxin/ai-model-workspace)&ensp;
 
 This Docker image serves as an easy-to-use workspace for working with AI models.  
 The goal is to prepare enough toolkits for you to start working with AI models with minimal effort.  
@@ -43,10 +42,9 @@ It comes pre-installed with a variety of very popular toolkits.
 
 [https://hub.docker.com/r/mrchengxin/comfyui-ready](https://hub.docker.com/r/mrchengxin/comfyui-ready)
 
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/mrchengxin/model-starter/comfyui-ready.yml?logo=github&logoColor=white&label=build%20and%20push)
-![Docker Image Size](https://img.shields.io/docker/image-size/mrchengxin/comfyui-ready?logo=docker&logoColor=white)
-![Docker Pulls](https://img.shields.io/docker/pulls/mrchengxin/comfyui-ready?logo=docker&logoColor=white)
-![Docker Image Version](https://img.shields.io/docker/v/mrchengxin/comfyui-ready?logo=docker&logoColor=white)
+[![Docker Image Size](https://img.shields.io/docker/image-size/mrchengxin/comfyui-ready?logo=docker&logoColor=white)](https://hub.docker.com/r/mrchengxin/comfyui-ready)&ensp;
+[![Docker Pulls](https://img.shields.io/docker/pulls/mrchengxin/comfyui-ready?logo=docker&logoColor=white)](https://hub.docker.com/r/mrchengxin/comfyui-ready)&ensp;
+[![Docker Image Version](https://img.shields.io/docker/v/mrchengxin/comfyui-ready?logo=docker&logoColor=white)](https://hub.docker.com/r/mrchengxin/comfyui-ready)&ensp;
 
 This Docker image serves as a ready-to-use ComfyUI.  
 The goal is to provide a production-grade ComfyUI that you can use to start generating AI art right away.  

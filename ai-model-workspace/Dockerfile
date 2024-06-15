@@ -6,7 +6,7 @@ RUN apt-get update \
     wget git htop vim pciutils aria2 git-lfs curl \
     httpie ncdu openssh-server zip unzip fontconfig \
     zsh iputils-ping jq bmon gcc ninja-build \
-    build-essential \
+    build-essential libgl1 libgl1-mesa-glx libglib2.0-0 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 

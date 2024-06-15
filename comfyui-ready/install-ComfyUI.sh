@@ -4,8 +4,6 @@ INSTALL_DIR="/root"
 
 # install necessary libraries
 conda run --no-capture-output -n comfyui pip install torch torchvision
-# to fix the no libGL.so.1 issue
-conda run --no-capture-output -n comfyui pip install opencv-python-headless==4.8.1.78
 conda run --no-capture-output -n comfyui pip install xformers --no-deps
 
 # install ComfyUI

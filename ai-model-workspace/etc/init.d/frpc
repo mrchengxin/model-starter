@@ -4,7 +4,7 @@
 
 NAME=frpc
 PIDFILE=/run/$NAME.pid
-DIR=/usr/local/frp
+DIR=/opt/frp
 DAEMON=$DIR/$NAME
 CONFIG=$DIR/frpc.toml
 DAEMON_ARGS="-c $CONFIG"

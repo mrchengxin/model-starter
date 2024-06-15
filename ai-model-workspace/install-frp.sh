@@ -9,8 +9,8 @@ fi
 wget -O /tmp/${ARCHIVE_NAME}.tar.gz https://github.com/fatedier/frp/releases/download/v0.58.1/${ARCHIVE_NAME}.tar.gz
 
 # Unzip the archive to a specific directory
-mkdir -p /usr/local/frp
-tar -zxvf /tmp/${ARCHIVE_NAME}.tar.gz -C /usr/local/frp --strip-components=1
-rm /usr/local/frp/frpc.toml
-rm /usr/local/frp/frps.toml
+mkdir -p /opt/frp
+tar -zxvf /tmp/${ARCHIVE_NAME}.tar.gz -C /opt/frp --strip-components=1
+rm /opt/frp/frpc.toml
+rm /opt/frp/frps.toml
 rm /tmp/${ARCHIVE_NAME}.tar.gz

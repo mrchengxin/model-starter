@@ -1,6 +1,10 @@
 #!/bin/bash
 
-INSTALL_DIR="${WORKSPACE_DIR:-/root}"
+INSTALL_DIR="/root"
+
+# clone ComfyUI
+cd ${INSTALL_DIR} || { echo "Failed to open ${INSTALL_DIR} directory"; exit 1; }
+git clone https://github.com/comfyanonymous/ComfyUI.git
 
 # popular ComfyUI custom nodes to be installed
 custom_nodes_repositories=(
@@ -29,31 +33,22 @@ custom_nodes_repositories=(
 "https://github.com/Kosinkadink/ComfyUI-AnimateDiff-Evolved.git"
 )
 
-# install above custom nodes
+# clone above custom nodes
 for repo in "${custom_nodes_repositories[@]}"; do
   # clone the repository
   cd ${INSTALL_DIR}/ComfyUI/custom_nodes || { echo "Failed to open custom_nodes directory"; exit 1; }
   git clone --depth 1 "$repo"
-
-  # install the requirements
-  repo_dir="${repo##*/}"
-  repo_dir="${repo_dir%.git}"
-  cd "${INSTALL_DIR}/ComfyUI/custom_nodes/$repo_dir" || { echo "Failed to open $repo_dir directory"; exit 1; }
-  if [ -f "requirements.txt" ]; then
-    pip install --no-cache-dir -r requirements.txt
-  fi
 done
 
 # create necessary directory for comfyui-workspace-manager
 mkdir -p ${INSTALL_DIR}/ComfyUI/my_workflows
 
-# install ComfyUI_UltimateSDUpscale
+# clone ComfyUI_UltimateSDUpscale
 cd ${INSTALL_DIR}/ComfyUI/custom_nodes || { echo "Failed to open custom_nodes directory"; exit 1; }
 git clone --depth 1 https://github.com/ssitu/ComfyUI_UltimateSDUpscale --recursive
 
-# ComfyUI-Impact-Pack
+# clone ComfyUI-Impact-Pack
 cd ${INSTALL_DIR}/ComfyUI/custom_nodes || { echo "Failed to open custom_nodes directory"; exit 1; }
 git clone --depth 1 https://github.com/ltdrdata/ComfyUI-Impact-Pack.git
 cd ${INSTALL_DIR}/ComfyUI/custom_nodes/ComfyUI-Impact-Pack || { echo "Failed to open ComfyUI-Impact-Pack directory"; exit 1; }
 git clone --depth 1 https://github.com/ltdrdata/ComfyUI-Impact-Subpack impact_subpack
-python install.py

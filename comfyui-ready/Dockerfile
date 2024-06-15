@@ -1,14 +1,22 @@
 FROM mrchengxin/ai-model-workspace:latest
 
+# create the Python environment for ComfyUI
+RUN conda create -n comfyui python==3.11.9 -y \
+    && echo -e "conda activate comfyui" >> ~/.zshrc \
+    && echo -e "conda activate comfyui" >> ~/.bashrc
+
 RUN mkdir -p /opt/ComfyUI
+
+# download ComfyUI, custom nodes, and essential models
+COPY ./download-ComfyUI.sh /opt/ComfyUI
+RUN /opt/ComfyUI/download-ComfyUI.sh
 
 # install ComfyUI
 COPY ./install-ComfyUI.sh /opt/ComfyUI
-RUN /opt/ComfyUI/install-ComfyUI.sh
+# RUN /opt/ComfyUI/install-ComfyUI.sh
 
-# install custom nodes
-COPY ./install-custom-nodes.sh /opt/ComfyUI
-# RUN /opt/ComfyUI/install-custom-nodes.sh
+# a script to start ComfyUI correctly
+COPY ./start-ComfyUI.sh /root
 
 WORKDIR /root
 

@@ -57,7 +57,7 @@ It comes pre-installed with a variety of very popular custom nodes.
 
 - `root`: the root user
 
-### Pre-installed essential models
+#### Pre-installed essential models
 
 * vae
   * [sd15-vae-ft-mse-840000-ema-pruned.safetensors](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/tree/main)

@@ -18,10 +18,9 @@ It comes pre-installed with a variety of very popular toolkits.
 
 #### Base image
 
-- [nvidia/cuda](https://hub.docker.com/r/nvidia/cuda/)
+- [nvidia/cuda:base](https://hub.docker.com/r/nvidia/cuda/)
   - [Ubuntu 22.04](https://releases.ubuntu.com/jammy/)
-  - [Nvidia CUDA math libraries](https://developer.nvidia.com/gpu-accelerated-libraries)
-  - [Nvidia NCCL](https://developer.nvidia.com/nccl)
+  - [Nvidia CUDA](https://developer.nvidia.com/gpu-accelerated-libraries)
 
 #### Users
 
@@ -57,6 +56,30 @@ It comes pre-installed with a variety of very popular custom nodes.
 #### Users
 
 - `root`: the root user
+
+### Pre-installed essential models
+
+* vae
+  * [sd15-vae-ft-mse-840000-ema-pruned.safetensors](https://huggingface.co/stabilityai/sd-vae-ft-mse-original/tree/main)
+  * [xl-vae-fp16-fix.safetensors](https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/tree/main)
+* upscale
+  * [RealESRGAN_x4plus_anime_6B.pth](https://github.com/xinntao/Real-ESRGAN/blob/master/docs/model_zoo.md)
+  * [RealESRGAN_x4plus.pth](https://github.com/xinntao/Real-ESRGAN/blob/master/docs/model_zoo.md)
+* embeddings
+  * [sd15-EasyNegative.safetensors](https://huggingface.co/datasets/gsdf/EasyNegative/tree/main)
+  * [sd15-EasyNegativeV2.safetensors](https://huggingface.co/gsdf/Counterfeit-V3.0/tree/main/embedding)
+  * [xl-negativeXL_Standard.safetensors](https://huggingface.co/gsdf/CounterfeitXL/tree/main/embeddings)
+  * [xl-negativeXL_Realistic.safetensors](https://huggingface.co/gsdf/CounterfeitXL/tree/main/embeddings)
+  * [xl-negativeXL_Anime.safetensors](https://huggingface.co/gsdf/CounterfeitXL/tree/main/embeddings)
+* loras
+  * [sd15-lora-lcm.safetensors](https://huggingface.co/latent-consistency/lcm-lora-sdv1-5/tree/main)
+  * [xl-lora-lcm.safetensors](https://huggingface.co/latent-consistency/lcm-lora-sdxl/tree/main)
+* ultralytics
+  * [bbox/face_yolov8m.pt](https://huggingface.co/Bingsu/adetailer/tree/main)
+  * [bbox/hand_yolov8s.pt](https://huggingface.co/Bingsu/adetailer/tree/main)
+  * [segm/person_yolov8m-seg.pt](https://huggingface.co/Bingsu/adetailer/tree/main)
+* sams
+  * [sam_vit_b_01ec64.pth](https://github.com/facebookresearch/segment-anything?tab=readme-ov-file#model-checkpoints)
 
 #### Pre-installed custom nodes
 
